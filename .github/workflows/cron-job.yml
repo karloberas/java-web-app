@@ -1,0 +1,22 @@
+name: Cron Job
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sundays at 00:00
+
+jobs:
+
+  weekly-task:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Run Weekly Task
+      run: |
+        mvn --batch-mode exec:java -Dexec.mainClass="com.example.App"

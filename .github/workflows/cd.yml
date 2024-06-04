@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  release:
+    types: [created]
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Maven
+      run: mvn --batch-mode package
+    - name: Deploy to Server
+      env:
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+      run: |
+        scp target/*.jar $SERVER_USER@example.com:/path/to/deploy/
+        ssh $SERVER_USER@example.com "/path/to/restart-script.sh"
