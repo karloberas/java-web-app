@@ -24,5 +24,5 @@ jobs:
         SERVER_USER: ${{ secrets.SERVER_USER }}
         SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
       run: |
-        scp target/*.jar $SERVER_USER@example.com:/path/to/deploy/
-        ssh $SERVER_USER@example.com "/path/to/restart-script.sh"
+        chmod +x deploy.sh
+        ./deploy.sh
