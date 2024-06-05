@@ -27,6 +27,6 @@ jobs:
         name: package
         path: target/*.jar
     - name: Greet someone
-      uses: fuyibenchung/my-github-action@2.0
+      uses: fuyibenchung/my-github-action@3.0
       with:
         name: 'John Doe'           
