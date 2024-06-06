@@ -29,4 +29,8 @@ jobs:
     - name: Greet someone
       uses: fuyibenchung/my-github-action@3.0
       with:
-        name: 'John Doe'           
+        name: 'John Doe'     
+    - name: Greet someone via shell action
+      uses: fuyibenchung/my-github-action-shell@1.0
+      with:
+        name: 'Mary Jane'              
