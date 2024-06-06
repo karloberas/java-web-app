@@ -29,8 +29,12 @@ jobs:
     - name: Greet someone
       uses: fuyibenchung/my-github-action@3.0
       with:
-        name: 'John Doe'     
-    - name: Greet someone via shell action
+        name: 'John Doe'  
+    - name: Run My Shell Action
+      id: myaction
       uses: fuyibenchung/my-github-action-shell@1.0
       with:
-        name: 'Mary Jane'              
+          name: "Mary Jane"
+    - name: Use output from My Shell Action
+      run: "echo 'The greeting message is: ${{ steps.myaction.outputs.greeting }}'"           
+
