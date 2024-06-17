@@ -1,4 +1,4 @@
-name: CI
+name: CI-With-Conditions
 
 on:
   push:
