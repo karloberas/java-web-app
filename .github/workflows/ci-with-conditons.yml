@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Maven
+      run: mvn --batch-mode --update-snapshots verify
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: package
+        path: target/*.jar      
+    - name: Deploy
+      if: success()
+      run: echo "Deploying application..."        
