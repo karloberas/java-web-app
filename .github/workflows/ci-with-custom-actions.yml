@@ -32,7 +32,7 @@ jobs:
         name: 'John Doe'  
     - name: Run My Shell Action
       id: myaction
-      uses: fuyibenchung/my-github-action-shell@3.0
+      uses: karloberas/my-github-action-shell@1.0
       with:
           name: "Mary Jane"
     - name: Use output from My Shell Action
