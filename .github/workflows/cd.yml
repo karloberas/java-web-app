@@ -23,6 +23,6 @@ jobs:
       env:
         SERVER_USER: ${{ secrets.SERVER_USER }} # Specified in settings
         SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
-      run: |
+      run: | # Runs a script
         chmod +x deploy.sh
         ./deploy.sh
