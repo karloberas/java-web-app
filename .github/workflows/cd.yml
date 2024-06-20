@@ -2,7 +2,7 @@ name: CD
 
 on:
   release:
-    types: [created]
+    types: [created] # Triggered by creating a GitHub release
 
 jobs:
 
@@ -21,7 +21,7 @@ jobs:
       run: mvn --batch-mode package
     - name: Deploy to Server
       env:
-        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SERVER_USER: ${{ secrets.SERVER_USER }} # Specified in settings
         SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
       run: |
         chmod +x deploy.sh
